@@ -13,6 +13,12 @@ public class Pez extends Animal {
 	public Pez() {
 	
 	}
+	public Pez(String nombre, int edad, String habitat, String genero) {
+		super.setNombre(nombre);
+		super.setEdad(edad);
+		super.setHabitat(habitat);
+		super.setGenero(genero);
+	}
 	public static int cantidadPeces() {
 		int p = 0;
 		for (Pez pe: listado) {
@@ -20,7 +26,7 @@ public class Pez extends Animal {
 		}
 		return p;
 	}
-	public void crearSalmon(String nombre, int edad, String genero, Zona[] zona) {
+	public void crearSalmon(String nombre, int edad, String genero) {
 		Pez salmon = new Pez();
 		this.colorEscamas = "rojo";
 		this.cantidadAletas = 6;
@@ -28,13 +34,12 @@ public class Pez extends Animal {
 		super.setNombre(nombre);
 		super.setEdad(edad);
 		super.setGenero(genero);
-		super.setZona(zona);
 		this.listado = new Pez[this.listado.length + 1];
 		listado[listado.length-1] = salmon;
 		setTotalAnimales(1);
 		this.salmones++;
 	}
-	public void crearBacalao(String nombre, int edad, String genero, Zona[] zona) {
+	public void crearBacalao(String nombre, int edad, String genero) {
 		Pez bacalao = new Pez();
 		this.colorEscamas = "gris";
 		this.cantidadAletas = 6;
@@ -42,7 +47,6 @@ public class Pez extends Animal {
 		super.setNombre(nombre);
 		super.setEdad(edad);
 		super.setGenero(genero);
-		super.setZona(zona);
 		this.listado = new Pez[this.listado.length + 1];
 		listado[listado.length-1] = bacalao;
 		setTotalAnimales(1);

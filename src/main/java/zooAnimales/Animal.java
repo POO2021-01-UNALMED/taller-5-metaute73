@@ -14,6 +14,13 @@ public class Animal {
 	public Animal() {
 		
 	}
+	public Animal(String nombre, int edad, String habitat, String genero) {
+		
+		this.nombre = nombre;
+		this.edad = edad;
+		this.habitat = habitat;
+		this.genero = genero;
+	}
 	
 	public String totalPorTipo() {
 		return "Mamiferos: "+ Mamifero.cantidadMamiferos() + "\nAves: " + Ave.cantidadAves() + "\nReptiles: " + 
