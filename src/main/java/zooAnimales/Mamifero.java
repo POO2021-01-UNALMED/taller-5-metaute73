@@ -48,10 +48,10 @@ public class Mamifero extends Animal{
 	public void setListado(ArrayList<Mamifero> listado) {
 		this.listado = listado;
 	}
-	public boolean getPelaje() {
+	public boolean isPelaje() {
 		return this.pelaje;
 	}
-	public void setPelaje(boolean pelaje) {
+	public void isPelaje(boolean pelaje) {
 		this.pelaje = pelaje;
 	}
 	public int getPatas() {
