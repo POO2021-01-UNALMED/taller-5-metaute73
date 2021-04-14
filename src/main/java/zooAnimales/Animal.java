@@ -1,13 +1,16 @@
 package zooAnimales;
 import gestion.Zona;
+import java.util.ArrayList;
+
 public class Animal {
 	
-	private int totalAnimales;
+	private static int totalAnimales;
 	private String nombre;
 	private int edad;
 	private String habitat;
 	private String genero;
-	private Zona[] zona;
+	private ArrayList<Zona> zona;
+
 	
 	public Animal() {
 		
@@ -34,7 +37,7 @@ public class Animal {
 	public int getTotalAnimales() {
 		return totalAnimales;
 	}
-	public void setTotalAnimales(int t) {
+	public static void setTotalAnimales(int t) {
 		totalAnimales += t;
 	}
 	public String getNombre() {
@@ -61,10 +64,10 @@ public class Animal {
 	public void setGenero(String genero) {
 		this.genero = genero;
 	}
-	public Zona[] getZona() {
+	public ArrayList<Zona> getZona() {
 		return this.zona;
 	}
-	public void setZona(Zona[] zona) {
+	public void setZona(ArrayList<Zona> zona) {
 		this.zona = zona;
 	}
 }

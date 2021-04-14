@@ -1,11 +1,11 @@
 package zooAnimales;
-
+import java.util.ArrayList;
 
 public class Pez extends Animal {
 	
-	private static Pez[] listado = {};
-	public int salmones;
-	public int bacalaos;
+	private static ArrayList<Pez> listado = new ArrayList<>();
+	public static int salmones;
+	public static int bacalaos;
 	private String colorEscamas;
 	private int cantidadAletas;
 	
@@ -27,49 +27,27 @@ public class Pez extends Animal {
 		}
 		return p;
 	}
-	public Pez crearSalmon(String nombre, int edad, String genero) {
-		Pez salmon = new Pez();
-		this.colorEscamas = "rojo";
-		this.cantidadAletas = 6;
-		super.setHabitat("oceano");
-		super.setNombre(nombre);
-		super.setEdad(edad);
-		super.setGenero(genero);
-		Pez[] moreP = new Pez[this.listado.length + 1];
-		for (int m = 0; m < this.listado.length; m++) {
-			moreP[m] = listado[m];
-		}
-		moreP[moreP.length-1] = salmon;
-		this.listado = moreP;
+	public static Pez crearSalmon(String nombre, int edad, String genero) {
+		Pez salmon = new Pez(nombre, edad, "oceano", genero, "rojo", 6);
+		listado.add(salmon);
 		setTotalAnimales(1);
-		this.salmones++;
+		salmones++;
 		return salmon;
 	}
-	public Pez crearBacalao(String nombre, int edad, String genero) {
-		Pez bacalao = new Pez();
-		this.colorEscamas = "gris";
-		this.cantidadAletas = 6;
-		super.setHabitat("oceano");
-		super.setNombre(nombre);
-		super.setEdad(edad);
-		super.setGenero(genero);
-		Pez[] moreP = new Pez[this.listado.length + 1];
-		for (int m = 0; m < this.listado.length; m++) {
-			moreP[m] = listado[m];
-		}
-		moreP[moreP.length-1] = bacalao;
-		this.listado = moreP;
+	public static Pez crearBacalao(String nombre, int edad, String genero) {
+		Pez bacalao = new Pez(nombre, edad, "oceano", genero, "rojo", 6);
+		listado.add(bacalao);
 		setTotalAnimales(1);
-		this.bacalaos++;
+		bacalaos++;
 		return bacalao;
 	}
 	public String movimiento() {
 		return "nadar";
 	}
-	public Pez[] getListado() {
-		return this.listado;
+	public ArrayList<Pez> getListado() {
+		return listado;
 	}
-	public void setListado(Pez[] listado) {
+	public void setListado(ArrayList<Pez> listado) {
 		this.listado = listado;
 	}
 	public String getColorEscamas() {

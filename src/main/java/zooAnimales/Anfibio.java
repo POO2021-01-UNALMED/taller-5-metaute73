@@ -1,12 +1,11 @@
 package zooAnimales;
-
-import gestion.Zona;
+import java.util.ArrayList;
 
 public class Anfibio extends Animal {
 	
-	private static Anfibio[] listado = {};
-	public int ranas;
-	public int salamandras;
+	private static ArrayList<Anfibio> listado = new ArrayList<>();
+	public static int ranas;
+	public static int salamandras;
 	private String colorPiel;
 	private boolean venenoso;
 	
@@ -28,49 +27,27 @@ public class Anfibio extends Animal {
 		}
 		return af;
 	}
-	public Anfibio crearRana(String nombre, int edad, String genero) {
-		Anfibio rana = new Anfibio();
-		this.colorPiel = "rojo";
-		this.venenoso = true;
-		super.setHabitat("selva");
-		super.setNombre(nombre);
-		super.setEdad(edad);
-		super.setGenero(genero);
-		Anfibio[] moreF = new Anfibio[this.listado.length + 1];
-		for (int m = 0; m < this.listado.length; m++) {
-			moreF[m] = listado[m];
-		}
-		moreF[moreF.length-1] = rana;
-		this.listado = moreF;
+	public static Anfibio crearRana(String nombre, int edad, String genero) {
+		Anfibio rana = new Anfibio(nombre, edad, "selva", genero, "rojo", true);
+		listado.add(rana);
 		setTotalAnimales(1);
-		this.ranas++;
+		ranas++;
 		return rana;
 	}
-	public Anfibio crearSalamandra(String nombre, int edad, String genero) {
-		Anfibio salamandra = new Anfibio();
-		this.colorPiel = "negro y amarillo";
-		this.venenoso = false;
-		super.setHabitat("selva");
-		super.setNombre(nombre);
-		super.setEdad(edad);
-		super.setGenero(genero);
-		Anfibio[] moreF = new Anfibio[this.listado.length + 1];
-		for (int m = 0; m < this.listado.length; m++) {
-			moreF[m] = listado[m];
-		}
-		moreF[moreF.length-1] = salamandra;
-		this.listado = moreF;
+	public static Anfibio crearSalamandra(String nombre, int edad, String genero) {
+		Anfibio salamandra = new Anfibio(nombre, edad, "selva", genero, "negro y amerillo", false);
+		listado.add(salamandra);
 		setTotalAnimales(1);
-		this.salamandras++;
+		salamandras++;
 		return salamandra;
 	}
 	public String movimiento() {
 		return "saltar";
 	}
-	public Anfibio[] getListado() {
+	public ArrayList<Anfibio> getListado() {
 		return this.listado;
 	}
-	public void setListado(Anfibio[] listado) {
+	public void setListado(ArrayList<Anfibio> listado) {
 		this.listado = listado;
 	}
 	public String getColorPiel() {

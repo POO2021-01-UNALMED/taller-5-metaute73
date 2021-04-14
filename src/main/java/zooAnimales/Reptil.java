@@ -1,11 +1,11 @@
 package zooAnimales;
-
+import java.util.ArrayList;
 
 public class Reptil extends Animal{
 	
-	private static Reptil[] listado = {};
-	public int iguanas;
-	public int serpientes;
+	private static ArrayList<Reptil> listado = new ArrayList<>();
+	public static int iguanas;
+	public static int serpientes;
 	private String colorEscamas;
 	private int largoCola;
 	
@@ -30,46 +30,24 @@ public class Reptil extends Animal{
 		}
 		return r;
 	}
-	public Reptil crearIguana(String nombre, int edad, String genero) {
-		Reptil iguana = new Reptil();
-		this.colorEscamas = "verde";
-		this.largoCola = 3;
-		super.setHabitat("humedal");
-		super.setNombre(nombre);
-		super.setEdad(edad);
-		super.setGenero(genero);
-		Reptil[] moreR = new Reptil[this.listado.length + 1];
-		for (int m = 0; m < this.listado.length; m++) {
-			moreR[m] = listado[m];
-		}
-		moreR[moreR.length-1] = iguana;
-		this.listado = moreR;
+	public static Reptil crearIguana(String nombre, int edad, String genero) {
+		Reptil iguana = new Reptil(nombre, edad, "humedal", genero, "verde", 3);
+		listado.add(iguana);
 		setTotalAnimales(1);
-		this.iguanas++;
+		iguanas++;
 		return iguana;
 	}
-	public Reptil crearSerpiente(String nombre, int edad, String genero) {
-		Reptil serpiente = new Reptil();
-		this.colorEscamas = "blanco";
-		this.largoCola = 1;
-		super.setHabitat("jungla");
-		super.setNombre(nombre);
-		super.setEdad(edad);
-		super.setGenero(genero);
-		Reptil[] moreR = new Reptil[this.listado.length + 1];
-		for (int m = 0; m < this.listado.length; m++) {
-			moreR[m] = listado[m];
-		}
-		moreR[moreR.length-1] = serpiente;
-		this.listado = moreR;
+	public static Reptil crearSerpiente(String nombre, int edad, String genero) {
+		Reptil serpiente = new Reptil(nombre, edad, "jungla", genero, "blanco", 1);
+		listado.add(serpiente);
 		setTotalAnimales(1);
-		this.serpientes++;
+		serpientes++;
 		return serpiente;
 	}
-	public Reptil[] getListado() {
-		return this.listado;
+	public ArrayList<Reptil> getListado() {
+		return listado;
 	}
-	public void setListado(Reptil[] listado) {
+	public void setListado(ArrayList<Reptil> listado) {
 		this.listado = listado;
 	}
 	public String getColorEscamas() {

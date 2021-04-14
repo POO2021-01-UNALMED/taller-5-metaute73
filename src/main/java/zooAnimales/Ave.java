@@ -1,11 +1,11 @@
 package zooAnimales;
-
+import java.util.ArrayList;
 
 public class Ave extends Animal{
 	
-	private static Ave[] listado = {};
-	public int halcones;
-	public int aguilas;
+	private static ArrayList<Ave> listado = new ArrayList<>();
+	public static int halcones;
+	public static int aguilas;
 	private String colorPlumas;
 	
 	public Ave() {
@@ -28,44 +28,24 @@ public class Ave extends Animal{
 		}
 		return av;
 	}
-	public Ave crearHalcon(String nombre, int edad, String genero) {
-		Ave halcon = new Ave();
-		this.colorPlumas = "cafe glorioso";
-		super.setHabitat("montañas");
-		super.setNombre(nombre);
-		super.setEdad(edad);
-		super.setGenero(genero);
-		Ave[] moreAv = new Ave[this.listado.length + 1];
-		for (int m = 0; m < this.listado.length; m++) {
-			moreAv[m] = listado[m];
-		}
-		moreAv[moreAv.length-1] = halcon;
-		this.listado = moreAv;
+	public static Ave crearHalcon(String nombre, int edad, String genero) {
+		Ave halcon = new Ave(nombre, edad, "montana", genero, "cafe glorioso");
+		listado.add(halcon);
 		setTotalAnimales(1);
-		this.halcones++;
+		halcones++;
 		return halcon;
 	}
-	public Ave crearAguila(String nombre, int edad, String genero) {
-		Ave aguila = new Ave();
-		this.colorPlumas = "blanco y amarillo";
-		super.setHabitat("montanas");
-		super.setNombre(nombre);
-		super.setEdad(edad);
-		super.setGenero(genero);
-		Ave[] moreAv = new Ave[this.listado.length + 1];
-		for (int m = 0; m < this.listado.length; m++) {
-			moreAv[m] = listado[m];
-		}
-		moreAv[moreAv.length-1] = aguila;
-		this.listado = moreAv;
+	public static Ave crearAguila(String nombre, int edad, String genero) {
+		Ave aguila = new Ave(nombre, edad, "montana", genero, "blanco y amarillo");
+		listado.add(aguila);
 		setTotalAnimales(1);
-		this.aguilas++;
+		aguilas++;
 		return aguila;
 	}
-	public Ave[] getListado() {
-		return this.listado;
+	public ArrayList<Ave> getListado() {
+		return listado;
 	}
-	public void setListado(Ave[] listado) {
+	public void setListado(ArrayList<Ave> listado) {
 		this.listado = listado;
 	}
 	public String getColorPlumas() {

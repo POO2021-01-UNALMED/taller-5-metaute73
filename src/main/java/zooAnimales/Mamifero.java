@@ -1,11 +1,11 @@
 package zooAnimales;
-
+import java.util.ArrayList;
 
 public class Mamifero extends Animal{
 	
-	private static Mamifero[] listado= {};
-	public int caballos;
-	public int leones;
+	private static ArrayList<Mamifero> listado = new ArrayList<>();
+	public static int caballos;
+	public static int leones;
 	private boolean pelaje;
 	private int patas;
 	
@@ -28,46 +28,24 @@ public class Mamifero extends Animal{
 		}
 		return m;
 	}
-	public Mamifero crearCaballo(String nombre, int edad, String genero) {
-		Mamifero caballo = new Mamifero();
-		this.pelaje = true;
-		this.patas = 4;
-		super.setHabitat("pradera");
-		super.setNombre(nombre);
-		super.setEdad(edad);
-		super.setGenero(genero);
-		Mamifero[] moreM = new Mamifero[this.listado.length + 1];
-		for (int m = 0; m < this.listado.length; m++) {
-			moreM[m] = listado[m];
-		}
-		moreM[moreM.length-1] = caballo;
-		this.listado = moreM;
+	public static Mamifero crearCaballo(String nombre, int edad, String genero) {
+		Mamifero caballo = new Mamifero(nombre, edad, "pradera", genero, true, 4);
+		listado.add(caballo);
 		setTotalAnimales(1);
-		this.caballos++;
+		caballos++;
 		return caballo;
 	}
-	public Mamifero crearLeon(String nombre, int edad, String genero) {
-		Mamifero leon = new Mamifero();
-		this.pelaje = true;
-		this.patas = 4;
-		super.setHabitat("selva");
-		super.setNombre(nombre);
-		super.setEdad(edad);
-		super.setGenero(genero);
-		Mamifero[] moreM2 = new Mamifero[this.listado.length + 1];
-		for (int m = 0; m < this.listado.length; m++) {
-			moreM2[m] = listado[m];
-		}
-		moreM2[moreM2.length-1] = leon;
-		this.listado = moreM2;
+	public static Mamifero crearLeon(String nombre, int edad, String genero) {
+		Mamifero leon = new Mamifero(nombre, edad, "selva", genero, true, 4);
+		listado.add(leon);
 		setTotalAnimales(1);
-		this.leones++;
+		leones++;
 		return leon;
 	}
-	public Mamifero[] getListado() {
-		return this.listado;
+	public ArrayList<Mamifero> getListado() {
+		return listado;
 	}
-	public void setListado(Mamifero[] listado) {
+	public void setListado(ArrayList<Mamifero> listado) {
 		this.listado = listado;
 	}
 	public boolean getPelaje() {

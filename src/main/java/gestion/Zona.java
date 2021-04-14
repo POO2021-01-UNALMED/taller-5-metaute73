@@ -1,12 +1,13 @@
 package gestion;
 
 import zooAnimales.Animal;
+import java.util.ArrayList;
 
 public class Zona {
 	
 	private String nombre;
 	private Zoologico zoo;
-	private Animal[] animales = {};
+	private ArrayList<Animal> animales = new ArrayList<>();
 	
 	public Zona(String nombre, Zoologico zoo) {
 		this.nombre = nombre;
@@ -17,18 +18,13 @@ public class Zona {
 	}
 	public void agregarAnimales(Animal animal) {
 		
-		Animal[] moreA = new Animal[this.animales.length + 1];
-		for (int a = 0; a < this.animales.length; a++) {
-			moreA[a] = animales[a];
-		}
-		moreA[moreA.length-1] = animal;
-		this.animales = moreA;
+		animales.add(animal);
 		
 	}
 	public int cantidadAnimales() {
 		int c = 0;
-		for (Animal a : this.animales) {
-			c += a.getTotalAnimales();
+		for (Animal a : animales) {
+			c += 1;
 		}
 		return c;
 	}
@@ -44,10 +40,10 @@ public class Zona {
 	public void setZoo(Zoologico zoo) {
 		this.zoo = zoo;
 	}
-	public Animal[] getAnimales() {
-		return this.animales;
+	public ArrayList<Animal> getAnimales() {
+		return animales;
 	}
-	public void setAnimales(Animal[] animales) {
+	public void setAnimales(ArrayList<Animal> animales) {
 		this.animales = animales;
 	}
 }
