@@ -1,10 +1,9 @@
 package zooAnimales;
 
-import gestion.Zona;
 
 public class Ave extends Animal{
 	
-	private static Ave[] listado;
+	private static Ave[] listado = {};
 	public int halcones;
 	public int aguilas;
 	private String colorPlumas;
@@ -12,11 +11,12 @@ public class Ave extends Animal{
 	public Ave() {
 	
 	}
-	public Ave(String nombre, int edad, String habitat, String genero) {
+	public Ave(String nombre, int edad, String habitat, String genero, String colorPlumas) {
 		super.setNombre(nombre);
 		super.setEdad(edad);
 		super.setHabitat(habitat);
 		super.setGenero(genero);
+		this.colorPlumas = colorPlumas;
 	}
 	public String movimiento() {
 		return "volar";
@@ -28,29 +28,39 @@ public class Ave extends Animal{
 		}
 		return av;
 	}
-	public void crearHalcon(String nombre, int edad, String genero) {
+	public Ave crearHalcon(String nombre, int edad, String genero) {
 		Ave halcon = new Ave();
 		this.colorPlumas = "cafe glorioso";
 		super.setHabitat("montañas");
 		super.setNombre(nombre);
 		super.setEdad(edad);
 		super.setGenero(genero);
-		this.listado = new Ave[this.listado.length + 1];
-		listado[listado.length-1] = halcon;
+		Ave[] moreAv = new Ave[this.listado.length + 1];
+		for (int m = 0; m < this.listado.length; m++) {
+			moreAv[m] = listado[m];
+		}
+		moreAv[moreAv.length-1] = halcon;
+		this.listado = moreAv;
 		setTotalAnimales(1);
 		this.halcones++;
+		return halcon;
 	}
-	public void crearAguila(String nombre, int edad, String genero) {
+	public Ave crearAguila(String nombre, int edad, String genero) {
 		Ave aguila = new Ave();
 		this.colorPlumas = "blanco y amarillo";
 		super.setHabitat("montanas");
 		super.setNombre(nombre);
 		super.setEdad(edad);
 		super.setGenero(genero);
-		this.listado = new Ave[this.listado.length + 1];
-		listado[listado.length-1] = aguila;
+		Ave[] moreAv = new Ave[this.listado.length + 1];
+		for (int m = 0; m < this.listado.length; m++) {
+			moreAv[m] = listado[m];
+		}
+		moreAv[moreAv.length-1] = aguila;
+		this.listado = moreAv;
 		setTotalAnimales(1);
-		this.halcones++;
+		this.aguilas++;
+		return aguila;
 	}
 	public Ave[] getListado() {
 		return this.listado;

@@ -1,10 +1,9 @@
 package zooAnimales;
 
-import gestion.Zona;
 
 public class Reptil extends Animal{
 	
-	private static Reptil[] listado;
+	private static Reptil[] listado = {};
 	public int iguanas;
 	public int serpientes;
 	private String colorEscamas;
@@ -13,11 +12,13 @@ public class Reptil extends Animal{
 	public Reptil() {
 		
 	}
-	public Reptil(String nombre, int edad, String habitat, String genero) {
+	public Reptil(String nombre, int edad, String habitat, String genero, String colorEscamas, int largoCola) {
 		super.setNombre(nombre);
 		super.setEdad(edad);
 		super.setHabitat(habitat);
 		super.setGenero(genero);
+		this.colorEscamas = colorEscamas;
+		this.largoCola = largoCola;
 	}
 	public String movimiento() {
 		return "reptar";
@@ -29,7 +30,7 @@ public class Reptil extends Animal{
 		}
 		return r;
 	}
-	public void crearIguana(String nombre, int edad, String genero) {
+	public Reptil crearIguana(String nombre, int edad, String genero) {
 		Reptil iguana = new Reptil();
 		this.colorEscamas = "verde";
 		this.largoCola = 3;
@@ -37,12 +38,17 @@ public class Reptil extends Animal{
 		super.setNombre(nombre);
 		super.setEdad(edad);
 		super.setGenero(genero);
-		this.listado = new Reptil[this.listado.length + 1];
-		listado[listado.length-1] = iguana;
+		Reptil[] moreR = new Reptil[this.listado.length + 1];
+		for (int m = 0; m < this.listado.length; m++) {
+			moreR[m] = listado[m];
+		}
+		moreR[moreR.length-1] = iguana;
+		this.listado = moreR;
 		setTotalAnimales(1);
 		this.iguanas++;
+		return iguana;
 	}
-	public void crearSerpiente(String nombre, int edad, String genero) {
+	public Reptil crearSerpiente(String nombre, int edad, String genero) {
 		Reptil serpiente = new Reptil();
 		this.colorEscamas = "blanco";
 		this.largoCola = 1;
@@ -50,10 +56,15 @@ public class Reptil extends Animal{
 		super.setNombre(nombre);
 		super.setEdad(edad);
 		super.setGenero(genero);
-		this.listado = new Reptil[this.listado.length + 1];
-		listado[listado.length-1] = serpiente;
+		Reptil[] moreR = new Reptil[this.listado.length + 1];
+		for (int m = 0; m < this.listado.length; m++) {
+			moreR[m] = listado[m];
+		}
+		moreR[moreR.length-1] = serpiente;
+		this.listado = moreR;
 		setTotalAnimales(1);
 		this.serpientes++;
+		return serpiente;
 	}
 	public Reptil[] getListado() {
 		return this.listado;

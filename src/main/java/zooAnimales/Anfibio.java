@@ -4,7 +4,7 @@ import gestion.Zona;
 
 public class Anfibio extends Animal {
 	
-	private static Anfibio[] listado;
+	private static Anfibio[] listado = {};
 	public int ranas;
 	public int salamandras;
 	private String colorPiel;
@@ -13,11 +13,13 @@ public class Anfibio extends Animal {
 	public Anfibio() {
 		
 	}
-	public Anfibio(String nombre, int edad, String habitat, String genero) {
+	public Anfibio(String nombre, int edad, String habitat, String genero, String colorPiel, boolean venenoso) {
 		super.setNombre(nombre);
 		super.setEdad(edad);
 		super.setHabitat(habitat);
 		super.setGenero(genero);
+		this.colorPiel = colorPiel;
+		this.venenoso = venenoso;
 	}
 	public static int cantidadAnfibios() {
 		int af = 0;
@@ -26,7 +28,7 @@ public class Anfibio extends Animal {
 		}
 		return af;
 	}
-	public void crearRana(String nombre, int edad, String genero, Zona[] zona) {
+	public Anfibio crearRana(String nombre, int edad, String genero) {
 		Anfibio rana = new Anfibio();
 		this.colorPiel = "rojo";
 		this.venenoso = true;
@@ -34,13 +36,17 @@ public class Anfibio extends Animal {
 		super.setNombre(nombre);
 		super.setEdad(edad);
 		super.setGenero(genero);
-		super.setZona(zona);
-		this.listado = new Anfibio[this.listado.length + 1];
-		listado[listado.length-1] = rana;
+		Anfibio[] moreF = new Anfibio[this.listado.length + 1];
+		for (int m = 0; m < this.listado.length; m++) {
+			moreF[m] = listado[m];
+		}
+		moreF[moreF.length-1] = rana;
+		this.listado = moreF;
 		setTotalAnimales(1);
 		this.ranas++;
+		return rana;
 	}
-	public void crearSalamandra(String nombre, int edad, String genero, Zona[] zona) {
+	public Anfibio crearSalamandra(String nombre, int edad, String genero) {
 		Anfibio salamandra = new Anfibio();
 		this.colorPiel = "negro y amarillo";
 		this.venenoso = false;
@@ -48,11 +54,15 @@ public class Anfibio extends Animal {
 		super.setNombre(nombre);
 		super.setEdad(edad);
 		super.setGenero(genero);
-		super.setZona(zona);
-		this.listado = new Anfibio[this.listado.length + 1];
-		listado[listado.length-1] = salamandra;
+		Anfibio[] moreF = new Anfibio[this.listado.length + 1];
+		for (int m = 0; m < this.listado.length; m++) {
+			moreF[m] = listado[m];
+		}
+		moreF[moreF.length-1] = salamandra;
+		this.listado = moreF;
 		setTotalAnimales(1);
 		this.salamandras++;
+		return salamandra;
 	}
 	public String movimiento() {
 		return "saltar";

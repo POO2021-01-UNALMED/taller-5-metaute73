@@ -1,10 +1,9 @@
 package zooAnimales;
 
-import gestion.Zona;
 
 public class Mamifero extends Animal{
 	
-	private static Mamifero[] listado;
+	private static Mamifero[] listado= {};
 	public int caballos;
 	public int leones;
 	private boolean pelaje;
@@ -13,11 +12,13 @@ public class Mamifero extends Animal{
 	public Mamifero() {
 		
 	}
-	public Mamifero(String nombre, int edad, String habitat, String genero) {
+	public Mamifero(String nombre, int edad, String habitat, String genero, boolean pelaje, int patas) {
 		super.setNombre(nombre);
 		super.setEdad(edad);
 		super.setHabitat(habitat);
 		super.setGenero(genero);
+		this.pelaje = pelaje;
+		this.patas = patas;
 	}
 	
 	public static int cantidadMamiferos() {
@@ -27,7 +28,7 @@ public class Mamifero extends Animal{
 		}
 		return m;
 	}
-	public void crearCaballo(String nombre, int edad, String genero) {
+	public Mamifero crearCaballo(String nombre, int edad, String genero) {
 		Mamifero caballo = new Mamifero();
 		this.pelaje = true;
 		this.patas = 4;
@@ -35,12 +36,17 @@ public class Mamifero extends Animal{
 		super.setNombre(nombre);
 		super.setEdad(edad);
 		super.setGenero(genero);
-		this.listado = new Mamifero[this.listado.length + 1];
-		listado[listado.length-1] = caballo;
+		Mamifero[] moreM = new Mamifero[this.listado.length + 1];
+		for (int m = 0; m < this.listado.length; m++) {
+			moreM[m] = listado[m];
+		}
+		moreM[moreM.length-1] = caballo;
+		this.listado = moreM;
 		setTotalAnimales(1);
 		this.caballos++;
+		return caballo;
 	}
-	public void crearLeon(String nombre, int edad, String genero) {
+	public Mamifero crearLeon(String nombre, int edad, String genero) {
 		Mamifero leon = new Mamifero();
 		this.pelaje = true;
 		this.patas = 4;
@@ -48,10 +54,15 @@ public class Mamifero extends Animal{
 		super.setNombre(nombre);
 		super.setEdad(edad);
 		super.setGenero(genero);
-		this.listado = new Mamifero[this.listado.length + 1];
-		listado[listado.length-1] = leon;
+		Mamifero[] moreM2 = new Mamifero[this.listado.length + 1];
+		for (int m = 0; m < this.listado.length; m++) {
+			moreM2[m] = listado[m];
+		}
+		moreM2[moreM2.length-1] = leon;
+		this.listado = moreM2;
 		setTotalAnimales(1);
 		this.leones++;
+		return leon;
 	}
 	public Mamifero[] getListado() {
 		return this.listado;

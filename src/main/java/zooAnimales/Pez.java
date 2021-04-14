@@ -1,10 +1,9 @@
 package zooAnimales;
 
-import gestion.Zona;
 
 public class Pez extends Animal {
 	
-	private static Pez[] listado;
+	private static Pez[] listado = {};
 	public int salmones;
 	public int bacalaos;
 	private String colorEscamas;
@@ -13,11 +12,13 @@ public class Pez extends Animal {
 	public Pez() {
 	
 	}
-	public Pez(String nombre, int edad, String habitat, String genero) {
+	public Pez(String nombre, int edad, String habitat, String genero, String colorEscamas, int cantidadAletas) {
 		super.setNombre(nombre);
 		super.setEdad(edad);
 		super.setHabitat(habitat);
 		super.setGenero(genero);
+		this.colorEscamas = colorEscamas;
+		this.cantidadAletas = cantidadAletas;
 	}
 	public static int cantidadPeces() {
 		int p = 0;
@@ -26,7 +27,7 @@ public class Pez extends Animal {
 		}
 		return p;
 	}
-	public void crearSalmon(String nombre, int edad, String genero) {
+	public Pez crearSalmon(String nombre, int edad, String genero) {
 		Pez salmon = new Pez();
 		this.colorEscamas = "rojo";
 		this.cantidadAletas = 6;
@@ -34,12 +35,17 @@ public class Pez extends Animal {
 		super.setNombre(nombre);
 		super.setEdad(edad);
 		super.setGenero(genero);
-		this.listado = new Pez[this.listado.length + 1];
-		listado[listado.length-1] = salmon;
+		Pez[] moreP = new Pez[this.listado.length + 1];
+		for (int m = 0; m < this.listado.length; m++) {
+			moreP[m] = listado[m];
+		}
+		moreP[moreP.length-1] = salmon;
+		this.listado = moreP;
 		setTotalAnimales(1);
 		this.salmones++;
+		return salmon;
 	}
-	public void crearBacalao(String nombre, int edad, String genero) {
+	public Pez crearBacalao(String nombre, int edad, String genero) {
 		Pez bacalao = new Pez();
 		this.colorEscamas = "gris";
 		this.cantidadAletas = 6;
@@ -47,10 +53,15 @@ public class Pez extends Animal {
 		super.setNombre(nombre);
 		super.setEdad(edad);
 		super.setGenero(genero);
-		this.listado = new Pez[this.listado.length + 1];
-		listado[listado.length-1] = bacalao;
+		Pez[] moreP = new Pez[this.listado.length + 1];
+		for (int m = 0; m < this.listado.length; m++) {
+			moreP[m] = listado[m];
+		}
+		moreP[moreP.length-1] = bacalao;
+		this.listado = moreP;
 		setTotalAnimales(1);
 		this.bacalaos++;
+		return bacalao;
 	}
 	public String movimiento() {
 		return "nadar";
