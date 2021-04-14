@@ -10,7 +10,7 @@ public class Mamifero extends Animal{
 	private int patas;
 	
 	public Mamifero() {
-		
+		listado.add(null);
 	}
 	public Mamifero(String nombre, int edad, String habitat, String genero, boolean pelaje, int patas) {
 		super.setNombre(nombre);

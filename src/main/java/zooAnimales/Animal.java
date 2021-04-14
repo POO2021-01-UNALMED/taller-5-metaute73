@@ -28,7 +28,7 @@ public class Animal {
 	Reptil.cantidadReptiles() + "\nPeces: " + Pez.cantidadPeces() + "\nAnfibios: " + Anfibio.cantidadAnfibios();
 	}
 	public String toString() {
-		return "mi nombre es " + this.nombre + ", tengo una edad de " + this.edad + ", habito en " + this.habitat +
+		return "Mi nombre es " + this.nombre + ", tengo una edad de " + this.edad + ", habito en " + this.habitat +
 				" y mi genero es " + this.genero;
 	}
 	public String movimiento() {
